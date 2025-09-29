@@ -1,6 +1,9 @@
 package com.github.kr328.clash.service
 
 import android.content.Context
+import android.os.Build
+import android.provider.Settings
+import com.github.kr328.clash.common.log.Log
 import com.github.kr328.clash.service.data.Database
 import com.github.kr328.clash.service.data.Imported
 import com.github.kr328.clash.service.data.ImportedDao
@@ -24,6 +27,7 @@ import okhttp3.Request
 import java.io.FileNotFoundException
 import java.math.BigDecimal
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 class ProfileManager(private val context: Context) : IProfileManager,
     CoroutineScope by CoroutineScope(Dispatchers.IO) {
@@ -140,9 +144,15 @@ class ProfileManager(private val context: Context) : IProfileManager,
         val client = OkHttpClient()
         try {
             val versionName = context.packageManager.getPackageInfo(context.packageName, 0).versionName
+            val hwid = Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID)
+
             val request = Request.Builder()
                 .url(old.source)
-                .header("User-Agent", "ClashMetaForAndroid/$versionName")
+                .header("User-Agent", "koala-clash/$versionName")
+                .header("x-hwid", hwid ?: "unknown")
+                .header("x-device-os", "Android")
+                .header("x-ver-os", Build.VERSION.RELEASE)
+                .header("x-device-model", Build.MODEL)
                 .build()
 
             client.newCall(request).execute().use { response ->
@@ -152,8 +162,43 @@ class ProfileManager(private val context: Context) : IProfileManager,
                 var download: Long = 0
                 var total: Long = 0
                 var expire: Long = 0
+                var interval: Long = old.interval
 
                 val userinfo = response.headers["subscription-userinfo"]
+                val updateInterval = response.headers["profile-update-interval"]
+                val announce = response.headers["announce"]
+                val announceUrl = response.headers["announce-url"]
+                val supportUrl = response.headers["support-url"]
+
+                var profileTitle: String? = null
+                val rawProfileTitle = response.headers["profile-title"]
+                if (rawProfileTitle?.startsWith("base64:", ignoreCase = true) == true) {
+                    try {
+                        val base64String = rawProfileTitle.substringAfter("base64:")
+                        val decodedBytes = Base64.getDecoder().decode(base64String)
+                        profileTitle = String(decodedBytes, Charsets.UTF_8)
+                    } catch (e: Exception) {
+                        Log.w("Failed to decode profile-title: $e")
+                    }
+                }
+
+                var filenameFromName: String? = null
+                response.headers["Content-Disposition"]?.let { headerValue ->
+                    headerValue.split(';').map { it.trim() }.find {
+                        it.startsWith("filename=", ignoreCase = true)
+                    }?.let { filenamePart ->
+                        filenameFromName = filenamePart.substringAfter("=").removeSurrounding("\"").trim()
+                    }
+                }
+
+                if (updateInterval != null) {
+                    try {
+                        val minutes = updateInterval.toInt() * 60 // Convert hours to minutes
+                        interval = TimeUnit.MINUTES.toMillis(minutes.toLong())
+                    } catch (e: NumberFormatException) {
+                        Log.w("Invalid profile update interval value: $updateInterval", e)
+                    }
+                }
                 if (response.isSuccessful && userinfo != null) {
 
                     val flags = userinfo.split(";")
@@ -180,15 +225,19 @@ class ProfileManager(private val context: Context) : IProfileManager,
 
                 val new = Imported(
                     old.uuid,
-                    old.name,
+                    if (!filenameFromName.isNullOrBlank()) filenameFromName else old.name,
                     old.type,
                     old.source,
-                    old.interval,
+                    interval,
                     upload,
                     download,
                     total,
                     expire,
-                    old?.createdAt ?: System.currentTimeMillis()
+                    old?.createdAt ?: System.currentTimeMillis(),
+                    announce,
+                    announceUrl,
+                    profileTitle,
+                    supportUrl
                 )
 
                 if (old != null) {
@@ -264,6 +313,11 @@ class ProfileManager(private val context: Context) : IProfileManager,
         val download = pending?.download ?: imported?.download ?: return null
         val total = pending?.total ?: imported?.total ?: return null
         val expire = pending?.expire ?: imported?.expire ?: return null
+        val announce = pending?.announce ?: imported?.announce
+        val announceUrl = pending?.announceUrl ?: imported?.announceUrl
+        val profileTitle = pending?.profileTitle ?: imported?.profileTitle
+        val supportUrl = pending?.supportUrl ?: imported?.supportUrl
+
 
         return Profile(
             uuid,
@@ -276,6 +330,11 @@ class ProfileManager(private val context: Context) : IProfileManager,
             download,
             total,
             expire,
+            announce,
+            announceUrl,
+            profileTitle,
+            supportUrl,
+
             resolveUpdatedAt(uuid),
             imported != null,
             pending != null

@@ -1,15 +1,18 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="PluralsCandidate">
-    <string name="launch_name_meta">Clash Meta</string>
-    <string name="launch_name_alpha">Clash Meta Alpha</string>
-    <string name="application_name_meta">Clash Meta for Android</string>
-    <string name="application_name_alpha">Clash Meta for Android Alpha</string>
+    <string name="launch_name_meta" translatable="false">Koala Clash</string>
+    <string name="launch_name_alpha" translatable="false">Koala Clash Alpha</string>
+    <string name="application_name_meta" translatable="false">Koala Clash for Android</string>
+    <string name="application_name_alpha" translatable="false">Koala Clash for Android Alpha</string>
 
     <string name="stopped">Stopped</string>
     <string name="tap_to_start">Tap to start</string>
+    <string name="tap_to_stop">Tap to stop</string>
     <string name="running">Running</string>
     <string name="format_traffic_forwarded">%s Forwarded</string>
 
     <string name="proxy">Proxy</string>
+    <string name="group">Group</string>
+    <string name="home">Home</string>
     <string name="direct_mode">Direct Mode</string>
     <string name="rule_mode">Rule Mode</string>
     <string name="global_mode">Global Mode</string>
@@ -23,6 +26,19 @@
     <string name="settings">Settings</string>
     <string name="help">Help</string>
     <string name="about">About</string>
+
+    <!-- New strings for modern design -->
+    <string name="connected">Connected</string>
+    <string name="disconnected">Disconnected</string>
+    <string name="world_map">World map background</string>
+    <string name="expand">Expand</string>
+    <string name="no_profile_selected">No profile selected</string>
+    <string name="download">Download</string>
+    <string name="upload">Upload</string>
+    <string name="power_button">Power button</string>
+    <string name="proxy_groups">Proxy Groups</string>
+    <string name="proxy_selectors_placeholder">Proxy selectors will appear here</string>
+    <string name="unknown">Unknown</string>
 
     <string name="copied">Copied</string>
 
@@ -240,16 +256,14 @@
     <string name="always_dark">Always Dark</string>
     <string name="always_light">Always Light</string>
 
-    <string name="tun_stack_mode">Stack Mode</string>
-    <string name="tun_stack_system">System Stack</string>
-    <string name="tun_stack_gvisor">Gvisor Stack</string>
-    <string name="tun_stack_mixed">Mixed Stack</string>
+    <string name="tun_stack_mode" translatable="false">Stack Mode</string>
+    <string name="tun_stack_system" translatable="false">System Stack</string>
+    <string name="tun_stack_gvisor" translatable="false">Gvisor Stack</string>
+    <string name="tun_stack_mixed" translatable="false">Mixed Stack</string>
 
     <string name="allow_all_apps">Allow all apps</string>
     <string name="allow_selected_apps">Allow selected apps</string>
     <string name="deny_selected_apps">Deny selected apps</string>
-
-    <string name="no_profile_selected">No profile selected</string>
 
     <string name="layout">Layout</string>
     <string name="single">Single</string>
@@ -310,14 +324,14 @@
     <string name="override_destination">Override Destination</string>
     <string name="force_domain">Force Domain</string>
     <string name="skip_domain">Skip Domain</string>
-    <string name="skip_src_address">Skip Src Address</string>
-    <string name="skip_dst_address">Skip Dst Address</string>
-    <string name="sniff_http_ports">Sniff HTTP Ports</string>
-    <string name="sniff_tls_ports">Sniff TLS Ports</string>
-    <string name="sniff_quic_ports">Sniff QUIC Ports</string>
-    <string name="sniff_http_override_destination">Sniff HTTP Override Destination</string>
-    <string name="sniff_tls_override_destination">Sniff TLS Override Destination</string>
-    <string name="sniff_quic_override_destination">Sniff QUIC Override Destination</string>
+    <string name="skip_src_address" translatable="false">Skip Src Address</string>
+    <string name="skip_dst_address" translatable="false">Skip Dst Address</string>
+    <string name="sniff_http_ports" translatable="false">Sniff HTTP Ports</string>
+    <string name="sniff_tls_ports" translatable="false">Sniff TLS Ports</string>
+    <string name="sniff_quic_ports" translatable="false">Sniff QUIC Ports</string>
+    <string name="sniff_http_override_destination" translatable="false">Sniff HTTP Override Destination</string>
+    <string name="sniff_tls_override_destination" translatable="false">Sniff TLS Override Destination</string>
+    <string name="sniff_quic_override_destination" translatable="false">Sniff QUIC Override Destination</string>
 
     <string name="geox_url_setting">GeoX Url Setting</string>
     <string name="geox_geoip">GeoIp Url</string>
@@ -343,5 +357,122 @@
     <string name="external_control_stopped">Clash.Meta service stopped</string>
 
     <string name="hide_app_icon_title">Hide App Icon</string>
-    <string name="hide_app_icon_desc">You can dial *#*#252746382#*#* to open this App</string>
+    <string name="hide_app_icon_desc" translatable="false">You can dial *#*#252746382#*#* to open this App</string>
+
+    <string name="no_profiles">No profiles found</string>
+    <string name="failed_to_load_profiles">Failed to load profiles</string>
+    <string name="not_available">Not Available</string>
+
+    <!-- Newly added keys for Compose screens -->
+    <string name="connecting">Connecting…</string>
+    <string name="selected">Selected</string>
+    <string name="select">Select</string>
+
+    <string name="add_profile_to_start">Add a new profile to get started</string>
+    <string name="press_plus_to_add_profile">Press + to add a new one.</string>
+
+    <string name="update_status">Update status</string>
+    <string name="menu">Menu</string>
+    <string name="traffic">Traffic</string>
+
+    <string name="format_used_of_total">Used: %1$s of %2$s</string>
+    <string name="format_used_only">Used: %1$s</string>
+
+    <string name="updated">Updated</string>
+    <string name="expiration">Expiration</string>
+    <string name="never">Never</string>
+    <string name="format_days_abbr">%d d.</string>
+    <string name="less_than_one_day">less than 1 d.</string>
+    <string name="expired">expired</string>
+
+    <string name="back">Back</string>
+
+    <!-- Hints and subtitles -->
+    <string name="ports_comma_separated">Ports separated by commas</string>
+    <string name="domains_comma_separated">Domains separated by commas</string>
+    <string name="addresses_cidr_comma_separated">Addresses/CIDR separated by commas</string>
+    <string name="zero_disabled_empty_not_modify">0 = disabled, empty = do not modify</string>
+    <string name="users_comma_separated">Users separated by commas (user:pass)</string>
+    <string name="bind_address_hint">Bind to address, * for all</string>
+    <string name="external_controller_hint">API address, e.g. 127.0.0.1:9090</string>
+    <string name="external_controller_tls_hint">TLS certificate for controller</string>
+    <string name="origins_comma_separated">Allowed origins separated by commas</string>
+    <string name="secret_hint">Secret for API access</string>
+    <string name="listen_hint">DNS server address, e.g. 0.0.0.0:53</string>
+    <string name="servers_comma_separated">Servers separated by commas</string>
+    <string name="country_code_hint">Country code, e.g. CN</string>
+
+    <!-- Settings screen group titles/subtitles -->
+    <string name="interface_and_app">Interface &amp; App</string>
+    <string name="interface_and_app_subtitle">Theme, language and app behavior</string>
+    <string name="network_settings_subtitle">DNS, proxy and network settings</string>
+    <string name="override_settings_subtitle">Override configuration parameters</string>
+    <string name="meta_features_subtitle">Advanced features of Meta core</string>
+    <string name="logs_subtitle">Clash connection log</string>
+
+    <!-- Meta settings reset -->
+    <string name="reset_meta_settings">Reset Settings</string>
+    <string name="reset_meta_settings_message">Are you sure you want to reset all Meta settings?</string>
+
+    <!-- Status chips -->
+    <string name="pending">Pending</string>
+    <string name="unsaved">Unsaved</string>
+
+    <!-- Additional hints -->
+    <string name="hosts_hint">Domain=IP pairs separated by commas</string>
+
+    <!-- Additional general UI strings -->
+    <string name="notifications">Notifications</string>
+    <string name="search_placeholder">Search…</string>
+    <string name="app_list_empty">App list is empty</string>
+    <string name="no_results">No results</string>
+    <string name="advanced_settings">Advanced settings</string>
+    <string name="save_and_activate">Save and Activate</string>
+    <string name="profile_name_optional">Profile Name (optional)</string>
+    <string name="zero_do_not_update">0 = do not update</string>
+    <string name="start_logging">Start logging</string>
+    <string name="no_saved_log_files">No saved log files</string>
+    <string name="delete_log_confirm">Delete the log?</string>
+    <string name="action_cannot_be_undone">This action cannot be undone.</string>
+    <string name="no_proxies_in_group">No proxies available in this group</string>
+    <string name="no_providers">No providers</string>
+    <string name="folder">Folder</string>
+    <string name="saving_profile">Saving profile…</string>
+    <string name="saving">Saving…</string>
+    <string name="format_error_message">Error: %1$s</string>
+    <string name="no_file_selected">File not selected</string>
+    <string name="save_and_update">Save and Update</string>
+    <string name="profile_properties">Profile Properties</string>
+    <string name="profile_files">Profile Files</string>
+    <string name="new_name">New Name</string>
+    <string name="save_profile">Saving profile…</string>
+    <string name="geofile_unknown_format">Unknown file format: %1$s</string>
+    <string name="geofile_imported_success">File \'%1$s\' imported successfully</string>
+    <string name="import_error">Import error: %1$s</string>
+
+    <string name="auto_restart_subtitle">Automatically restart the service after a crash</string>
+    <string name="theme">Theme</string>
+    <string name="theme_system">System</string>
+    <string name="hide_app_icon_subtitle">The icon will be hidden from the app list</string>
+    <string name="route_via_vpn">Route via VPN</string>
+    <string name="route_via_vpn_summary">The main operating mode of the application</string>
+    <string name="ipv6_summary">Enable IPv6 traffic routing</string>
+    <string name="tun_stack">TUN Stack</string>
+    <string name="app_list">App List</string>
+    <string name="access_control_title">Access Control</string>
+    <string name="sniffing">Sniffing Mode</string>
+    <string name="sniffer_config">Use sniffer settings from config</string>
+    <string name="sniffer_override">Override sniffer settings</string>
+
+    <string name="close_streaming">Close Streaming</string>
+    <string name="delete_all">Delete All</string>
+    <string name="delete_all_logs_confirm">Delete all logs?</string>
+    <string name="open">Open</string>
+    <string name="updating_short">Updating…</string>
+
+    <string name="service_not_running">Clash is not running</string>
+    <string name="check_delay">Check Delay</string>
+    <string name="proxies_unavailable">No proxies available in this group</string>
+    <string name="port_whitelist">Port Whitelist</string>
+    <string name="disable_sniffer">Disable sniffer</string>
 </resources>

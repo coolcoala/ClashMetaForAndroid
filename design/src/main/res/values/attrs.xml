@@ -5,6 +5,9 @@
     <attr name="colorClashStopped" format="color" />
     <attr name="colorControlDisabled" format="color" />
     <attr name="colorLogo" format="color" />
+    <attr name="colorSurfaceContainer" format="color" />
+    <attr name="colorSurfaceContainerHigh" format="color" />
+    <attr name="colorOutlineVariant" format="color" />
 
     <attr name="enabled" format="boolean" />
     <attr name="text" format="string" />

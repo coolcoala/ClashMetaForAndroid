@@ -23,6 +23,11 @@ data class Profile(
     val total: Long,
     val expire: Long,
 
+    val announce: String?,
+    val announceUrl: String?,
+    val profileTitle: String?,
+    val supportUrl: String?,
+
 
     val updatedAt: Long,
     val imported: Boolean,

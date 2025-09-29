@@ -35,7 +35,7 @@ subprojects {
         buildFeatures.buildConfig = true
         defaultConfig {
             if (isApp) {
-                applicationId = "com.github.metacubex.clash"
+                applicationId = "com.koala.clash"
             }
 
             project.name.let { name ->
@@ -43,11 +43,11 @@ subprojects {
                 else "com.github.kr328.clash.$name"
             }
 
-            minSdk = 21
+            minSdk = 26
             targetSdk = 35
 
-            versionName = "2.11.16"
-            versionCode = 211016
+            versionName = "0.1.0"
+            versionCode = 100000
 
             resValue("string", "release_name", "v$versionName")
             resValue("integer", "release_code", "$versionCode")
@@ -65,7 +65,7 @@ subprojects {
             if (!isApp) {
                 consumerProguardFiles("consumer-rules.pro")
             } else {
-                setProperty("archivesBaseName", "cmfa-$versionName")
+                setProperty("archivesBaseName", "kcfa-$versionName")
             }
         }
 
@@ -159,6 +159,7 @@ subprojects {
             dataBinding {
                 isEnabled = name != "hideapi"
             }
+            compose = name == "app"
         }
 
         if (isApp) {
@@ -171,6 +172,10 @@ subprojects {
                     reset()
                     include("arm64-v8a", "armeabi-v7a", "x86", "x86_64")
                 }
+            }
+
+            composeOptions {
+                kotlinCompilerExtensionVersion = "1.5.14"
             }
         }
 

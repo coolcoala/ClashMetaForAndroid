@@ -2,6 +2,8 @@ package com.github.kr328.clash.service
 
 import android.content.Context
 import android.net.Uri
+import android.os.Build
+import android.provider.Settings
 import com.github.kr328.clash.common.log.Log
 import com.github.kr328.clash.core.Clash
 import com.github.kr328.clash.service.data.Imported
@@ -73,17 +75,63 @@ object ProfileProcessor {
                         var download: Long = 0
                         var total: Long = 0
                         var expire: Long = 0
+                        var interval = snapshot.interval
+                        var announce: String? = null
+                        var announceUrl: String? = null
+                        var profileTitle: String? = null
+                        var supportUrl: String? = null
+                        var filenameFromName: String? = null
+
                         if (snapshot?.type == Profile.Type.Url) {
                             if (snapshot.source.startsWith("https://", true)) {
                                 val client = OkHttpClient()
                                 val versionName = context.packageManager.getPackageInfo(context.packageName, 0).versionName
+                                val hwid = Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID)
+
                                 val request = Request.Builder()
                                     .url(snapshot.source)
-                                    .header("User-Agent", "ClashMetaForAndroid/$versionName")
+                                    .header("User-Agent", "koala-clash/$versionName")
+                                    .header("x-hwid", hwid ?: "unknown")
+                                    .header("x-device-os", "Android")
+                                    .header("x-ver-os", Build.VERSION.RELEASE)
+                                    .header("x-device-model", Build.MODEL)
                                     .build()
 
                                 client.newCall(request).execute().use { response ->
                                     val userinfo = response.headers["subscription-userinfo"]
+                                    val updateInterval = response.headers["profile-update-interval"]
+                                    announce = response.headers["announce"]
+                                    announceUrl = response.headers["announce-url"]
+                                    supportUrl = response.headers["support-url"]
+
+                                    val rawProfileTitle = response.headers["profile-title"]
+                                    if (rawProfileTitle?.startsWith("base64:", ignoreCase = true) == true) {
+                                        try {
+                                            val base64String = rawProfileTitle.substringAfter("base64:")
+                                            val decodedBytes = Base64.getDecoder().decode(base64String)
+                                            profileTitle = String(decodedBytes, Charsets.UTF_8)
+                                        } catch (e: Exception) {
+                                            Log.w("Failed to decode profile-title: $e")
+                                        }
+                                    }
+
+                                    response.headers["Content-Disposition"]?.let { headerValue ->
+                                        headerValue.split(';').map { it.trim() }.find {
+                                            it.startsWith("filename=", ignoreCase = true)
+                                        }?.let { filenamePart ->
+                                            filenameFromName = filenamePart.substringAfter("=").removeSurrounding("\"").trim()
+                                        }
+                                    }
+
+                                    if (updateInterval != null) {
+                                        try {
+                                            val minutes = updateInterval.toInt() * 60 // Convert hours to minutes
+                                            interval = TimeUnit.MINUTES.toMillis(minutes.toLong())
+                                        } catch (e: NumberFormatException) {
+                                            Log.w("Invalid profile update interval value: $updateInterval", e)
+                                        }
+                                    }
+
                                     if (response.isSuccessful && userinfo != null) {
                                         val flags = userinfo.split(";")
                                         for (flag in flags) {
@@ -107,15 +155,19 @@ object ProfileProcessor {
                             }
                             val new = Imported(
                                 snapshot.uuid,
-                                snapshot.name,
+                                name = if (!filenameFromName.isNullOrBlank()) filenameFromName else snapshot.name,
                                 snapshot.type,
                                 snapshot.source,
-                                snapshot.interval,
+                                interval,
                                 upload,
                                 download,
                                 total,
                                 expire,
-                                old?.createdAt ?: System.currentTimeMillis()
+                                old?.createdAt ?: System.currentTimeMillis(),
+                                announce,
+                                announceUrl,
+                                profileTitle,
+                                supportUrl
                             )
                             if (old != null) {
                                 ImportedDao().update(new)

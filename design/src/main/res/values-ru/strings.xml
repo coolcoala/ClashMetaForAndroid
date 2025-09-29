@@ -3,8 +3,10 @@
     <string name="tap_to_start">Нажмите для запуска</string>
     <string name="running">Запущен</string>
     <string name="format_traffic_forwarded">%s перенаправлено</string>
+    <string name="home">Главная</string>
 
     <string name="proxy">Прокси</string>
+    <string name="group">Группа</string>
     <string name="direct_mode">Прямой режим</string>
     <string name="rule_mode">Режим правил</string>
     <string name="global_mode">Глобальный режим</string>
@@ -294,12 +296,9 @@
     <string name="geox_geoip">GeoIP URL</string>
     <string name="geox_mmdb">MMDB URL</string>
     <string name="geox_geosite">Geosite URL</string>
-    <string name="geoip_url" translatable="false">https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/geoip.dat</string>
-    <string name="mmdb_url" translatable="false">https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb</string>
-    <string name="geosite_url" translatable="false">https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/geosite.dat</string>
     <string name="geox_files" >Geo Files</string>
     <string name="import_geoip_file">Import GeoIP Database</string>
-    <string name="press_to_import">Press to import...</string>
+    <string name="press_to_import"> Press to import…</string>
     <string name="import_geosite_file">Import GeoSite Database</string>
     <string name="import_country_file">Import Country Database</string>
     <string name="geofile_import_failed">Import failed</string>
@@ -314,4 +313,132 @@
     <string name="force_dns_mapping">Force DNS Mapping</string>
     <string name="parse_pure_ip">Parse Pure IP</string>
     <string name="override_destination">Override Destination</string>
+
+    <!-- Newly added and missing translations -->
+    <string name="no_profiles">Профили не найдены</string>
+    <string name="failed_to_load_profiles">Ошибка загрузки профилей</string>
+
+    <string name="connecting">Подключение…</string>
+    <string name="connected">Подключено</string>
+    <string name="disconnected">Отключено</string>
+    <string name="selected">Выбрано</string>
+    <string name="select">Выбрать</string>
+
+    <string name="download">Скачано</string>
+    <string name="upload">Отдано</string>
+
+    <string name="add_profile_to_start">Добавьте новый профиль, чтобы начать работу</string>
+    <string name="press_plus_to_add_profile">Нажмите +, чтобы добавить новый.</string>
+
+    <string name="update_status">Статус обновления</string>
+    <string name="menu">Меню</string>
+    <string name="traffic">Трафик</string>
+
+    <string name="format_used_of_total">Использовано: %1$s из %2$s</string>
+    <string name="format_used_only">Использовано: %1$s</string>
+
+    <string name="updated">Обновлено</string>
+    <string name="expiration">Срок действия</string>
+    <string name="never">Никогда</string>
+    <string name="format_days_abbr">%d д.</string>
+    <string name="less_than_one_day">менее 1 д.</string>
+    <string name="expired">истёк</string>
+
+    <string name="back">Назад</string>
+
+    <string name="ports_comma_separated">Порты через запятую</string>
+    <string name="domains_comma_separated">Домены через запятую</string>
+    <string name="addresses_cidr_comma_separated">Адреса/CIDR через запятую</string>
+    <string name="zero_disabled_empty_not_modify">0 = отключено, пусто = не изменять</string>
+    <string name="users_comma_separated">Пользователи через запятую (user:pass)</string>
+    <string name="bind_address_hint">Привязать к адресу, * для всех</string>
+    <string name="external_controller_hint">Адрес API, например 127.0.0.1:9090</string>
+    <string name="external_controller_tls_hint">TLS-сертификат для контроллера</string>
+    <string name="origins_comma_separated">Разрешенные источники через запятую</string>
+    <string name="secret_hint">Секрет для доступа к API</string>
+    <string name="listen_hint">Адрес DNS-сервера, например 0.0.0.0:53</string>
+    <string name="servers_comma_separated">Серверы через запятую</string>
+    <string name="country_code_hint">Код страны, например CN</string>
+
+    <string name="interface_and_app">Интерфейс и приложение</string>
+    <string name="interface_and_app_subtitle">Тема, язык и поведение приложения</string>
+    <string name="network_settings_subtitle">Настройки DNS, проксирования и сети</string>
+    <string name="override_settings_subtitle">Изменение параметров конфигурации</string>
+    <string name="meta_features_subtitle">Дополнительные возможности ядра Meta</string>
+    <string name="logs_subtitle">Журнал подключений Clash</string>
+
+    <string name="reset_meta_settings">Сбросить настройки</string>
+    <string name="reset_meta_settings_message">Вы уверены, что хотите сбросить все Meta-настройки?</string>
+
+    <string name="pending">Ожидает</string>
+    <string name="unsaved">Не сохранён</string>
+
+    <!-- Additional general UI strings -->
+    <string name="notifications">Уведомления</string>
+    <string name="search_placeholder">Поиск…</string>
+    <string name="app_list_empty">Список приложений пуст</string>
+    <string name="no_results">Ничего не найдено</string>
+    <string name="advanced_settings">Расширенные настройки</string>
+    <string name="save_and_activate">Сохранить и активировать</string>
+    <string name="profile_name_optional">Имя профиля (необязательно)</string>
+    <string name="zero_do_not_update">0 = не обновлять</string>
+    <string name="start_logging">Начать логирование</string>
+    <string name="no_saved_log_files">Сохранённые лог-файлы отсутствуют</string>
+    <string name="delete_log_confirm">Удалить лог?</string>
+    <string name="action_cannot_be_undone">Это действие нельзя будет отменить.</string>
+    <string name="no_proxies_in_group">В этой группе нет доступных прокси</string>
+    <string name="no_providers">Нет провайдеров</string>
+    <string name="folder">Папка</string>
+    <string name="saving_profile">Сохранение профиля…</string>
+    <string name="saving">Сохранение…</string>
+    <string name="format_error_message">Ошибка: %1$s</string>
+    <string name="no_file_selected">Файл не выбран</string>
+    <string name="save_and_update">Сохранить и обновить</string>
+    <string name="service_not_running">Clash не запущен</string>
+    <string name="check_delay">Проверить задержку</string>
+    <string name="proxies_unavailable">В этой группе нет доступных прокси</string>
+    <string name="save_profile">Сохранение профиля…</string>
+    <string name="updating_short">Обновление…</string>
+
+    <string name="access_control_title">Доступ приложений</string>
+    <string name="auto_restart_subtitle">Автоматически перезапускать сервис после сбоя</string>
+    <string name="theme">Тема</string>
+    <string name="theme_system">Системная</string>
+    <string name="hide_app_icon_title">Скрыть иконку приложения</string>
+    <string name="hide_app_icon_subtitle">Иконка будет убрана из списка приложений</string>
+    <string name="profile_properties">Свойства профиля</string>
+    <string name="profile_files">Файлы профиля</string>
+    <string name="new_name">Новое имя</string>
+    <string name="expand">Развернуть</string>
+    <string name="route_via_vpn">Маршрутизировать через VPN</string>
+    <string name="route_via_vpn_summary">Основной режим работы приложения</string>
+    <string name="ipv6_summary">Включить маршрутизацию IPv6-трафика</string>
+    <string name="tun_stack">TUN Стек</string>
+    <string name="app_list">Список приложений</string>
+    <string name="close_streaming">Закрыть трансляцию</string>
+    <string name="delete_all">Удалить все</string>
+    <string name="delete_all_logs_confirm">Удалить все логи?</string>
+    <string name="open">Открыть</string>
+    <string name="geofile_unknown_format">Неизвестный формат файла: %1$s</string>
+    <string name="geofile_imported_success">Файл \'%1$s\' успешно импортирован</string>
+    <string name="import_error">Ошибка импорта: %1$s</string>
+    <string name="tap_to_stop">Нажмите для остановки</string>
+    <string name="world_map">Фон с картой мира</string>
+    <string name="power_button">Кнопка питания</string>
+    <string name="proxy_groups">Группы прокси</string>
+    <string name="proxy_selectors_placeholder">Селекторы прокси появятся здесь</string>
+    <string name="unknown">Неизвестно</string>
+    <string name="allow_ipv6">Разрешить IPv6</string>
+    <string name="allow_ipv6_summary">Разрешить IPv6-трафик через VpnService</string>
+    <string name="external_controller">Внешний контроллер</string>
+    <string name="external_controller_tls">TLS внешнего контроллера</string>
+    <string name="allow_origins">Разрешённые источники</string>
+    <string name="allow_private_network">Разрешить частные сети</string>
+    <string name="fakeip_filter_mode">Режим фильтрации Fake-IP</string>
+    <string name="blacklist">Чёрный список</string>
+    <string name="whitelist">Белый список</string>
+    <string name="inline">Встроенный</string>
+    <string name="import_asn_file">Импортировать базу ASN</string>
+    <string name="not_available">Недоступно</string>
+    <string name="hosts_hint">Пары Домен=IP через запятую</string>
 </resources>

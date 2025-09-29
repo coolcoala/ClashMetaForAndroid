@@ -36,9 +36,9 @@
         <meta-data
             android:name="releaseCode"
             android:value="@integer/release_code" />
-
+        
         <activity
-            android:name=".MainActivity"
+            android:name=".screens.home.MainActivity"
             android:configChanges="uiMode"
             android:exported="true"
             android:label="@string/launch_name"
@@ -54,7 +54,7 @@
         <activity-alias
             android:name=".MainActivityAlias"
             android:exported="true"
-            android:targetActivity=".MainActivity">
+            android:targetActivity=".screens.home.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -69,16 +69,6 @@
             android:label="@string/external_control_activity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data android:scheme="clash"/>
-                <data android:scheme="clashmeta"/>
-                <data android:host="install-config"/>
-            </intent-filter>
-            <intent-filter>
                 <action android:name="com.github.metacubex.clash.meta.action.START_CLASH" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -92,88 +82,82 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ApkBrokenActivity"
+            android:name=".screens.settings.ApkBrokenActivity"
             android:configChanges="uiMode"
             android:exported="false"
             android:label="@string/application_broken" />
         <activity
-            android:name=".AppCrashedActivity"
+            android:name=".screens.settings.AppCrashedActivity"
             android:configChanges="uiMode"
             android:exported="false"
             android:label="@string/application_crashed"
             android:launchMode="singleTask" />
+
         <activity
-            android:name=".ProfilesActivity"
+            android:name=".screens.profiles.new_profile.NewProfileActivity"
             android:configChanges="uiMode"
-            android:exported="false"
-            android:label="@string/profiles" />
+            android:exported="true" android:label="@string/create_profile">
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="clash"/>
+                <data android:scheme="clashmeta"/>
+                <data android:host="install-config"/>
+            </intent-filter>
+
+        </activity>
+
         <activity
-            android:name=".NewProfileActivity"
-            android:configChanges="uiMode"
-            android:exported="false"
-            android:label="@string/create_profile" />
-        <activity
-            android:name=".PropertiesActivity"
+            android:name=".screens.profiles.properties.PropertiesActivity"
             android:configChanges="uiMode"
             android:exported="false"
             android:label="@string/profile" />
-        <activity
-            android:name=".ProxyActivity"
-            android:configChanges="uiMode"
-            android:exported="false"
-            android:label="@string/proxy" />
         <activity
             android:name=".ProvidersActivity"
             android:configChanges="uiMode"
             android:exported="false"
             android:label="@string/providers" />
         <activity
-            android:name=".LogsActivity"
+            android:name=".screens.settings.logs.LogsActivity"
             android:configChanges="uiMode"
             android:exported="false"
             android:label="@string/logs" />
         <activity
-            android:name=".LogcatActivity"
+            android:name=".screens.settings.logcat.LogcatActivity"
             android:configChanges="uiMode"
             android:exported="false"
             android:label="@string/logcat" />
         <activity
-            android:name=".SettingsActivity"
-            android:configChanges="uiMode"
-            android:exported="false"
-            android:label="@string/settings" />
-        <activity
-            android:name=".NetworkSettingsActivity"
+            android:name=".screens.settings.network_settings.NetworkSettingsActivity"
             android:configChanges="uiMode"
             android:exported="false"
             android:label="@string/network" />
         <activity
-            android:name=".AppSettingsActivity"
+            android:name=".screens.settings.app_settings.AppSettingsActivity"
             android:configChanges="uiMode"
             android:exported="false"
             android:label="@string/app" />
         <activity
-            android:name=".OverrideSettingsActivity"
+            android:name=".screens.settings.override_settings.OverrideSettingsActivity"
             android:configChanges="uiMode"
             android:exported="false"
             android:label="@string/override" />
         <activity
-            android:name=".MetaFeatureSettingsActivity"
+            android:name=".screens.settings.meta_features.MetaFeatureSettingsActivity"
             android:configChanges="uiMode"
             android:exported="false"
             android:label="@string/meta_features" />
         <activity
-            android:name=".AccessControlActivity"
+            android:name=".screens.settings.access_control.AccessControlActivity"
             android:configChanges="uiMode"
             android:exported="false"
             android:label="@string/access_control_packages" />
         <activity
-            android:name=".HelpActivity"
-            android:configChanges="uiMode"
-            android:exported="false"
-            android:label="@string/help" />
-        <activity
-            android:name=".FilesActivity"
+            android:name=".screens.settings.FilesActivity"
             android:configChanges="uiMode"
             android:exported="false"
             android:label="@string/files" />

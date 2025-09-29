@@ -2,8 +2,8 @@ package com.github.kr328.clash.remote
 
 import android.content.Context
 import android.content.Intent
-import com.github.kr328.clash.ApkBrokenActivity
-import com.github.kr328.clash.AppCrashedActivity
+import com.github.kr328.clash.screens.settings.ApkBrokenActivity
+import com.github.kr328.clash.screens.settings.AppCrashedActivity
 import com.github.kr328.clash.common.Global
 import com.github.kr328.clash.common.log.Log
 import com.github.kr328.clash.common.util.intent
